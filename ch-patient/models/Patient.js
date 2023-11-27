@@ -1,33 +1,29 @@
 module.exports = (sequelize, Sequelize) => {
-    const Patient = sequelize.define("patient", {
-        name: {
-            type: Sequelize.TEXT
+    const patients = sequelize.define('patient', {
+        patientId: {
+            type: Sequelize.STRING,
+            primaryKey: true
         }, 
-        state: {
-            type: Sequelize.TEXT
+        name: {
+            type: Sequelize.STRING
         },
+        email: {
+            type: Sequelize.STRING
+        }, 
+        dateOfBirth: {
+            type: Sequelize.DATE
+        }, 
         address: {
-            type: Sequelize.TEXT
+            type: Sequelize.STRING
         },
-        contact: {
-            type: Sequelize.TEXT
+        recordCreatedAt: {
+            type: Sequelize.DATE,
+            defaultValue: Sequelize.NOW
         },
-        bloodGroup: {
-            type: Sequelize.TEXT
-        },
-        insuranceNumber: {
-            type: Sequelize.TEXT
-        },
-        createdAt: {
-            type: Sequelize.DATE
-        },
-        lastUpdatedAt: {
-            type: Sequelize.DATE
-        },
-        records: {
-            type: Sequelize.ARRAY
-        },
-    })
-
-    return Patient
+        recordUpdatedAt: {
+            type: Sequelize.DATE,
+            defaultValue: Sequelize.NOW
+        }
+    });
+    return patients;
 }
