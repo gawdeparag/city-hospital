@@ -1,11 +1,15 @@
 const Sequelize = require('sequelize');
-const dbName = 'city-hospital';
-const dbUser = 'root';
-const dbPassword = 'pagawde';
+
+const dotenv = require('dotenv');
+dotenv.config();
+
+const dbName = process.env.DB_NAME;
+const dbUser = process.env.DB_USER
+const dbPassword = process.env.DB_PASSWORD;
 
 const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
-    host: 'localhost',
-    port: 3306,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
     dialect: 'mysql'
 });
 
