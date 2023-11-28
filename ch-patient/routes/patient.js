@@ -11,6 +11,7 @@ router.get('/patient/:lastName', patientController.getPatientByLastName);
 
 router.post('/patient/new', patientController.createPatient);
 
+router.put('/patient/update/', patientController.updatePatient);
 
 
 module.exports = router;

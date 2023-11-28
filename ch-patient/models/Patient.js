@@ -13,6 +13,9 @@ module.exports = (sequelize, Sequelize) => {
         gender: {
             type: Sequelize.ENUM("Male", "Female", "Other")
         },
+        bloodGroup: {
+            type: Sequelize.ENUM("O+ve", "O-ve", "A+ve", "A-ve", "B+ve", "B-ve", "AB+ve", "AB-ve")
+        },
         email: {
             type: Sequelize.STRING
         }, 
