@@ -13,5 +13,7 @@ router.post('/patient/new', patientController.createPatient);
 
 router.put('/patient/update/', patientController.updatePatient);
 
+router.delete('/patient/delete/', patientController.deletePatient);
+
 
 module.exports = router;

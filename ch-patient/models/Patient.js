@@ -34,8 +34,8 @@ module.exports = (sequelize, Sequelize) => {
             defaultValue: Sequelize.NOW
         }, 
         patientStatus: {
-            type: Sequelize.ENUM("alive", "dead"),
-            defaultValue: "alive" 
+            type: Sequelize.ENUM("Alive", "Dead"),
+            defaultValue: "Alive" 
         }, 
         dateOfPassing: {
             type: Sequelize.DATE

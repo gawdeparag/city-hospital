@@ -102,10 +102,23 @@ const updatePatient = (req, res) => {
 
 }
 
+const deletePatient = (req, res) => {
+    Patient.destroy({
+        where: {
+            patientId: req.query.patientId
+        }
+    }).then((data) => {
+        res.status(200).send({message: "Patient Record deleted successfully"});
+    }).catch((error) => {
+        res.status(500).send({error: error});
+    });
+}
+
 module.exports = {
     createPatient, 
     getPatients, 
     getPatientByFirstName, 
     getPatientByLastName,
-    updatePatient
+    updatePatient,
+    deletePatient
 }
