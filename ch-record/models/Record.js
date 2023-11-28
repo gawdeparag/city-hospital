@@ -1,14 +1,35 @@
-const mysql = require('mysql');
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize();
-
-const Record = sequelize.define("ch-record", {
-    id: DataTypes.TEXT,
-    patientId: DataTypes.TEXT, 
-    doctorId: DataTypes.TEXT,
-    diagnosisTitle: DataTypes.TEXT,
-    diagnosisDescription: DataTypes.TEXT,
-    costOfTreatment: DataTypes.DOUBLE,
-    coveredWithInsurance: DataTypes.BOOLEAN,
-    createdAt: DataTypes.DATE
-});
+module.exports = (sequelize, Sequelize) => {
+    const records = sequelize.define('record', {
+        recordId: {
+            type: Sequelize.STRING,
+            primaryKey: true
+        }, 
+        title: {
+            type: Sequelize.STRING
+        },
+        description: {
+            type: Sequelize.STRING
+        },
+        dateOfRecord: {
+            type: Sequelize.DATE
+        }, 
+        attendingDoctor: {
+            type: Sequelize.STRING
+        },
+        patientId: {
+            type: Sequelize.STRING
+        }, 
+        costOfTreatment: {
+            type: Sequelize.INTEGER
+        }, 
+        insuranceUsed: {
+            type: Sequelize.BOOLEAN,
+            defaultValue: false
+        }, 
+        prescription: {
+            type: Sequelize.JSON
+        }
+        
+    });
+    return records;
+}
