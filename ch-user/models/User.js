@@ -1,5 +1,3 @@
-const contactValidationRegex = '^[6-9]\d{9}$';
-
 module.exports = (sequelize, Sequelize) => {
     const users = sequelize.define('user', {
         userId: {
@@ -31,13 +29,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.ENUM("Doctor", "Nurse", "Staff")
         }, 
         contact: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            validate: {
-                validator: (v) => {
-                    return contactValidationRegex.test(v);
-                }
-            }
+            type: Sequelize.STRING
         }
     });
     return users;

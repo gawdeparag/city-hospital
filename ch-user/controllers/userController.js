@@ -1,8 +1,8 @@
 const db = require('../config/db.config');
 const User = db.users;
 
-const createUser = (req, res) => {
-    if(!req.body.firstName || !req.body.lastName || !req.body.gender || !req.body.bloodGroup || !req.body.dateOfBirth || !req.body.address) {
+const createUser = async (req, res) => {
+    if(!req.body.firstName || !req.body.lastName || !req.body.gender || !req.body.bloodGroup || !req.body.dateOfBirth || !req.body.address || !req.body.contact) {
         return res.status(400).send({message: "Bad Data"});
     }
     
@@ -16,10 +16,12 @@ const createUser = (req, res) => {
         bloodGroup: req.body.bloodGroup,
         email: req.body.email || null, 
         dateOfBirth: req.body.dateOfBirth, 
-        address: req.body.address
+        address: req.body.address,
+        profession: req.body.profession,
+        contact: req.body.contact
     }; 
-
-    User.create(newUser).then((data) => {
+    
+    await User.create(newUser).then((data) => {
         res.status(200).send({message: "User Data added successfully", data: data});
     }).catch((error) => {
         res.status(500).send({message: "Error occured", error: error});
