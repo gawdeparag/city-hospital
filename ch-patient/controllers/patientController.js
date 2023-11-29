@@ -9,7 +9,7 @@ const createPatient = (req, res) => {
     var date = new Date();
     var today = date.getTime();
     const newPatient = {
-        patientId: "USAMR" + today.toString(),
+        patientId: "CHPR" + today.toString(),
         firstName: req.body.firstName,
         lastName: req.body.lastName, 
         gender: req.body.gender,

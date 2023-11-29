@@ -2,15 +2,16 @@ const db = require('../config/db.config');
 const Record = db.records;
 
 const createRecord = (req, res) => {
-    if(!req.body.title || !req.body.description || !req.body.dateOfRecord || !req.body.attendingDoctor || !req.body.patientId) {
+    if(!req.body.title || !req.body.description || !req.body.attendingDoctor || !req.body.patientId) {
         return res.status(400).send({message: "Bad Data"});
     }
-    
+    var date = new Date();
+    var today = date.getTime();
     const newRecord = {
-        recordId: "USAHR" + today.toString(),
+        recordId: "CHPMR" + today.toString(),
         title: req.body.title,
         description: req.body.description,
-        dateOfRecord: req.body.dateOfRecord, 
+        dateOfRecord: today, 
         attendingDoctor: req.body.attendingDoctor,
         patientId: req.body.patientId,
         costOfTreatment: req.body.costOfTreatment,
