@@ -2,7 +2,7 @@ const db = require('../config/db.config');
 const User = db.users;
 
 const createUser = async (req, res) => {
-    if(!req.body.firstName || !req.body.lastName || !req.body.gender || !req.body.bloodGroup || !req.body.dateOfBirth || !req.body.address || !req.body.contact) {
+    if(!req.body.firstName || !req.body.lastName || !req.body.gender || !req.body.bloodGroup || !req.body.dateOfBirth || !req.body.contact) {
         return res.status(400).send({message: "Bad Data"});
     }
     
@@ -49,6 +49,9 @@ const updateUser = (req, res) => {
     if (req.body.email) {
         updatedUser.email = req.body.email
     } 
+    if (req.body.gender) {
+        updatedUser.gender = req.body.gender
+    }
     if (req.body.bloodGroup) {
         updatedUser.bloodGroup = req.body.bloodGroup
     } 
@@ -58,11 +61,11 @@ const updateUser = (req, res) => {
     if (req.body.address) {
         updatedUser.address = req.body.address 
     }
-    if (req.body.userStatus) {
-        updatedUser.userStatus = req.body.userStatus;
+    if (req.body.profession) {
+        updatedUser.profession = req.body.profession;
     }
-    if (req.body.dateOfPassing) {
-        updatedUser.dateOfPassing = req.body.dateOfPassing;
+    if (req.body.contact) {
+        updatedUser.contact = req.body.contact;
     }
     updatedUser.recordUpdatedAt = new Date().getTime();
     
