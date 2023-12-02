@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
-    const users = sequelize.define('user', {
-        userId: {
+    const staff = sequelize.define('staff', {
+        staffId: {
             type: Sequelize.STRING,
             primaryKey: true
         }, 
@@ -26,11 +26,11 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         profession: {
-            type: Sequelize.ENUM("Doctor", "Nurse", "Staff")
+            type: Sequelize.ENUM("Staff", "Admin")
         }, 
         contact: {
             type: Sequelize.STRING
         }
     });
-    return users;
+    return staff;
 }
